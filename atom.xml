@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-27T16:34:46.632Z</updated>
+  <updated>2016-09-27T16:38:57.032Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
+    <title>Hexo博客优化的一些问题</title>
     <link href="http://yoursite.com/2016/09/28/Hexo%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
     <id>http://yoursite.com/2016/09/28/Hexo博客优化的一些问题/</id>
-    <published>2016-09-27T16:21:58.928Z</published>
-    <updated>2016-09-27T16:34:46.632Z</updated>
+    <published>2016-09-27T16:37:40.000Z</published>
+    <updated>2016-09-27T16:38:57.032Z</updated>
     
     <content type="html"><![CDATA[<h1 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h1><p>花了两三天，终于通过github pages+Hexo框架把博客给搭了起来。期间几乎每一个小小的进展，都遇到了一些阻碍。解决问题的思路总结：多谷歌，多百度。直接把错误提示往搜索框里一贴，定有不少前人踩过同样的坑并给出了解决方案。如没有满意的搜索结果，不妨换一种搜索方式。总之，多尝试，多试错，总会盼得柳暗花明。因计算机基础薄弱，这个解决的过程有着颇多不易，我是取得了一点点进展就会振臂高呼的。不少程序员给出的解决方案有一种既定假设，写出来的“专业术语”读者肯定能懂，所以有些步骤并没有讲得很详细，殊不知隔行如隔山，小白要多翻几个山头才能取得真经。我站在一个小白的角度，把自己在搭建博客过程中遇到的一些问题尽量以浅显易懂的方式解答，既让自己加深一下印象，也或许能让后来的小白少走些弯路。<br><a id="more"></a></p>
 <p>至于为什么要搭建这个博客呢，一是想学习编程，本来是想从零开始敲出来，深感进程艰难，后来在知乎看到一句话，大意是学习别人造好的轮子远比自己闷头乱敲进步得快。恍然大悟，赶紧撤下，悔时还不晚；二是觉得拥有自己的网站是一件很酷的事情；三是能有个安安静静的地方写些零碎，记些成长。</p>
@@ -42,6 +42,8 @@
     
     </summary>
     
+    
+      <category term="Hexo github" scheme="http://yoursite.com/tags/Hexo-github/"/>
     
   </entry>
   
