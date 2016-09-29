@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-29T09:20:17.362Z</updated>
+  <updated>2016-09-29T09:38:42.094Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/09/29/git%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E5%BA%93%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6/"/>
     <id>http://yoursite.com/2016/09/29/git添加远程库上传本地文件/</id>
     <published>2016-09-29T03:03:34.000Z</published>
-    <updated>2016-09-29T09:20:17.362Z</updated>
+    <updated>2016-09-29T09:38:42.094Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><ul>
 <li><p><a href="https://git-for-windows.github.io/" target="_blank" rel="external">安装git</a>；</p>
@@ -35,7 +35,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote add origin git@github.com:goodKathy/markdownPhoto.git</div></pre></td></tr></table></figure>
 <p>注意把代码里的“goodKathy”换成你自己的github用户名。</p>
 <h2 id="将本地仓库的内容推送到远程库中"><a href="#将本地仓库的内容推送到远程库中" class="headerlink" title="将本地仓库的内容推送到远程库中"></a>将本地仓库的内容推送到远程库中</h2><p>执行命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ git push -u origin master</div><div class="line">``` </div><div class="line"></div><div class="line">在这里出现了一个报错：  </div><div class="line">   </div><div class="line">```bash</div><div class="line">error: failed to push some refs to <span class="string">'https://github.com/goodKathy/markdownPhoto.git'</span></div><div class="line">hint: Updates were rejected because the remote contains work that you <span class="keyword">do</span></div><div class="line">hint: not have locally. This is usually caused by another repository pushing</div><div class="line">hint: to the same ref. You may want to first integrate the remote changes</div><div class="line">hint: (e.g., <span class="string">'git pull ...'</span>) before pushing again.</div><div class="line">hint: See the <span class="string">'Note about fast-forwards'</span> <span class="keyword">in</span> <span class="string">'git push --help'</span> <span class="keyword">for</span> details.</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">$ git push -u origin master</div><div class="line">``` </div><div class="line"></div><div class="line">在这里出现了一个报错：</div><div class="line"></div><div class="line">```bash</div><div class="line">error: failed to push some refs to <span class="string">'https://github.com/goodKathy/markdownPhoto.git'</span></div><div class="line">hint: Updates were rejected because the remote contains work that you <span class="keyword">do</span></div><div class="line">hint: not have locally. This is usually caused by another repository pushing</div><div class="line">hint: to the same ref. You may want to first integrate the remote changes</div><div class="line">hint: (e.g., <span class="string">'git pull ...'</span>) before pushing again.</div><div class="line">hint: See the <span class="string">'Note about fast-forwards'</span> <span class="keyword">in</span> <span class="string">'git push --help'</span> <span class="keyword">for</span> details.</div></pre></td></tr></table></figure>
 <p>搜索了下，出现这个提示的原因是远程仓库里有内容更新，但本地仓库里没有更新，导致push失败。这时你需要把远程库里的内容先pull到本地仓库来，执行命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull origin master</div></pre></td></tr></table></figure>
 <p>然而又出现报错： </p>
