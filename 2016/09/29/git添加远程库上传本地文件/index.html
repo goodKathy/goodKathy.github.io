@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo github," />
+  <meta name="keywords" content="git," />
 
 
 
@@ -86,16 +86,28 @@
 
 
 
-<meta name="description" content="写在前面的话花了两三天，终于通过github pages+Hexo框架把博客给搭了起来。期间几乎每一个小小的进展，都遇到了一些阻碍。解决问题的思路总结：多谷歌，多百度。直接把错误提示往搜索框里一贴，定有不少前人踩过同样的坑并给出了解决方案。如没有满意的搜索结果，不妨换一种搜索方式。总之，多尝试，多试错，总会盼得柳暗花明。因计算机基础薄弱，这个解决的过程有着颇多不易，我是取得了一点点进展就会振臂高呼">
+<meta name="description" content="前期准备
+安装git；
+
+注册github，并为账号添加SSH keys。
+主要步骤1. 在github上创建新的仓库登录github后，点击页面右上角“+”号，选择“new repository”进入页面，在“Repository name”输入框内填写你的仓库名，而后点击页面下方的“Create repository”按钮即可创建。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo博客优化的一些问题">
-<meta property="og:url" content="http://yoursite.com/2016/09/28/Hexo博客优化的一些问题/index.html">
+<meta property="og:title" content="git添加远程库上传本地文件">
+<meta property="og:url" content="http://yoursite.com/2016/09/29/git添加远程库上传本地文件/index.html">
 <meta property="og:site_name" content="周小树">
-<meta property="og:description" content="写在前面的话花了两三天，终于通过github pages+Hexo框架把博客给搭了起来。期间几乎每一个小小的进展，都遇到了一些阻碍。解决问题的思路总结：多谷歌，多百度。直接把错误提示往搜索框里一贴，定有不少前人踩过同样的坑并给出了解决方案。如没有满意的搜索结果，不妨换一种搜索方式。总之，多尝试，多试错，总会盼得柳暗花明。因计算机基础薄弱，这个解决的过程有着颇多不易，我是取得了一点点进展就会振臂高呼">
-<meta property="og:updated_time" content="2016-09-27T16:38:57.032Z">
+<meta property="og:description" content="前期准备
+安装git；
+
+注册github，并为账号添加SSH keys。
+主要步骤1. 在github上创建新的仓库登录github后，点击页面右上角“+”号，选择“new repository”进入页面，在“Repository name”输入框内填写你的仓库名，而后点击页面下方的“Create repository”按钮即可创建。">
+<meta property="og:updated_time" content="2016-09-29T05:05:57.846Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo博客优化的一些问题">
-<meta name="twitter:description" content="写在前面的话花了两三天，终于通过github pages+Hexo框架把博客给搭了起来。期间几乎每一个小小的进展，都遇到了一些阻碍。解决问题的思路总结：多谷歌，多百度。直接把错误提示往搜索框里一贴，定有不少前人踩过同样的坑并给出了解决方案。如没有满意的搜索结果，不妨换一种搜索方式。总之，多尝试，多试错，总会盼得柳暗花明。因计算机基础薄弱，这个解决的过程有着颇多不易，我是取得了一点点进展就会振臂高呼">
+<meta name="twitter:title" content="git添加远程库上传本地文件">
+<meta name="twitter:description" content="前期准备
+安装git；
+
+注册github，并为账号添加SSH keys。
+主要步骤1. 在github上创建新的仓库登录github后，点击页面右上角“+”号，选择“new repository”进入页面，在“Repository name”输入框内填写你的仓库名，而后点击页面下方的“Create repository”按钮即可创建。">
 
 
 
@@ -113,7 +125,7 @@
   };
 </script>	
 
-  <title> Hexo博客优化的一些问题 | 周小树 </title>
+  <title> git添加远程库上传本地文件 | 周小树 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -243,7 +255,7 @@
             
             
               
-                Hexo博客优化的一些问题
+                git添加远程库上传本地文件
               
             
           </h1>
@@ -255,19 +267,38 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-28T00:37:40+08:00" content="2016-09-28">
-              2016-09-28
+            <time itemprop="dateCreated" datetime="2016-09-29T11:03:34+08:00" content="2016-09-29">
+              2016-09-29
             </time>
           </span>
 
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Git/" itemprop="url" rel="index">
+                    <span itemprop="name">Git</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/28/Hexo博客优化的一些问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/28/Hexo博客优化的一些问题/" itemprop="commentsCount"></span>
+                <a href="/2016/09/29/git添加远程库上传本地文件/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/29/git添加远程库上传本地文件/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -290,18 +321,57 @@
       
 
       
-        <h1 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h1><p>花了两三天，终于通过github pages+Hexo框架把博客给搭了起来。期间几乎每一个小小的进展，都遇到了一些阻碍。解决问题的思路总结：多谷歌，多百度。直接把错误提示往搜索框里一贴，定有不少前人踩过同样的坑并给出了解决方案。如没有满意的搜索结果，不妨换一种搜索方式。总之，多尝试，多试错，总会盼得柳暗花明。因计算机基础薄弱，这个解决的过程有着颇多不易，我是取得了一点点进展就会振臂高呼的。不少程序员给出的解决方案有一种既定假设，写出来的“专业术语”读者肯定能懂，所以有些步骤并没有讲得很详细，殊不知隔行如隔山，小白要多翻几个山头才能取得真经。我站在一个小白的角度，把自己在搭建博客过程中遇到的一些问题尽量以浅显易懂的方式解答，既让自己加深一下印象，也或许能让后来的小白少走些弯路。<br><a id="more"></a></p>
-<p>至于为什么要搭建这个博客呢，一是想学习编程，本来是想从零开始敲出来，深感进程艰难，后来在知乎看到一句话，大意是学习别人造好的轮子远比自己闷头乱敲进步得快。恍然大悟，赶紧撤下，悔时还不晚；二是觉得拥有自己的网站是一件很酷的事情；三是能有个安安静静的地方写些零碎，记些成长。</p>
-<p>搭建Hexo博客之前的过程在网上有很多很好的教程，本文就不赘述了。在此只贴几个比较好的网址供大家查阅，内容有重复，比较着看即可。</p>
-<ul>
-<li><a href="https://xuanwo.org/2015/03/26/hexo-intor/" target="_blank" rel="external">史上最详细的Hexo博客搭建图文教程</a></li>
-<li><a href="http://sunwhut.com/2015/10/30/buildBlog/" target="_blank" rel="external">如何利用GitHub Pages和Hexo快速搭建个人博客</a></li>
-<li><a href="http://www.jianshu.com/p/834d7cc0668d" target="_blank" rel="external">我的博客是如何搭建的（github pages + HEXO + 域名绑定）</a></li>
+        <h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><ul>
+<li><p><a href="https://git-for-windows.github.io/" target="_blank" rel="external">安装git</a>；</p>
+</li>
+<li><p>注册github，并为账号添加SSH keys。</p>
+<h1 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h1><p><strong>1. 在github上创建新的仓库</strong><br>登录github后，点击页面右上角“+”号，选择“<br>new repository”进入页面，在“Repository name”输入框内填写你的仓库名，而后点击页面下方的“Create repository”按钮即可创建。</p>
+<a id="more"></a>
+</li>
 </ul>
-<p>本文主要讲的博客搭建完成后优化的一些问题。</p>
-<hr>
-<h1 id="更新日志"><a href="#更新日志" class="headerlink" title="更新日志"></a>更新日志</h1><p>2016.9.27–更新写在前面的话。</p>
-<hr>
+<p><strong>2. 创建本地仓库</strong><br>在本地选择一个地方创建一个文件夹，作为你的本地仓库，如在D盘创建一个名为”markdownPhoto”（一般与github仓库同名）的文件夹，用于存放markdown需要的图片。然后在本地仓库里放入你想放的内容，可以是单个文件，也可以是文件夹。 </p>
+<p><strong>3. 将本地仓库与github上的远程库建立关联</strong><br>在本地仓库点鼠标右键，选择“Git Bash Here”，调出命令框。运行命令：<br>    <code>$ git remote add origin git@github.com:goodKathy/markdownPhoto.git</code>  </p>
+<p>注意把代码里的“goodKathy”换成你自己的github用户名。</p>
+<p><strong>4.将本地仓库的内容推送到远程库中</strong><br>执行命令：<br>    <code>$ git push -u origin master</code>    </p>
+<p>在这里出现了一个报错：  </p>
+<pre><code>error: failed to push some refs to &apos;https://github.com/goodKathy/markdownPhoto.git&apos;
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., &apos;git pull ...&apos;) before pushing again.
+hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.  
+</code></pre><p>搜索了下，出现这个提示的原因是远程仓库里有内容更新，但本地仓库里没有更新，导致push失败。这时你需要把远程库里的内容先pull到本地仓库来，执行命令：<br>    <code>$ git pull origin master</code>  </p>
+<p>然而又出现报错：<br>    <code>fatal: refusing to merge unrelated histories</code>  </p>
+<p>又搜索了下解决方案，原来还需要添加可选项“–allow unrelated histories”，于是重新执行命令：<br>   <code>$ git pull origin master --allow unrelated histories</code></p>
+<p>提示需要输入commit message（即备注）：  </p>
+<pre><code>Merge branch &apos;master&apos; of github.com:goodKathy/markdownPhoto
+
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with &apos;#&apos; will be ignored, and an empty message aborts
+# the commit.
+</code></pre><p>输入后（我是直接把这个命令框关了，再git bash个新的命令框），远程仓库就同步到本地了。  </p>
+<p><strong>5. 在本地添加文件试试推送</strong><br>我在本地的markdownPhoto仓库里添加了一个叫images的文件夹，里面放了一张图“cow.jpg”。  </p>
+<blockquote>
+<p>注意： git不能管理空的文件夹，文件夹里必须有文件才能add.  </p>
+</blockquote>
+<p>接下来执行指令：<br>git add .<br>git commit -m “提交cow.jpg”<br>git push -u origin master    </p>
+<pre><code>Administrator@MICROSO-5A8UT0A MINGW32 /d/Program Files/markdownPhotos (master)
+$ git add .
+
+Administrator@MICROSO-5A8UT0A MINGW32 /d/Program Files/markdownPhotos (master)
+$ git commit -m &quot;提交cow.jpg&quot;
+On branch master
+Your branch is up-to-date with &apos;origin/master&apos;.
+nothing to commit, working tree clean
+
+Administrator@MICROSO-5A8UT0A MINGW32 /d/Program Files/markdownPhotos (master)
+$ git push -u origin master
+Branch master set up to track remote branch master from origin.
+Everything up-to-date  
+</code></pre><p>现在本地仓库的内容就同步到远程库了，刷新远程库页面，就会看到多了一个”images”的文件夹，点开一看，里面有个“cow.jpg”,点开这个图，点击“Download”按钮，便能获得图片地址，添加到markdown啦。之后需要推送新的内容，重复步骤5即可。  </p>
+<p>推荐下廖雪峰老师的<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">Git教程</a>，讲得很到位。</p>
 
       
     </div>
@@ -323,7 +393,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Hexo-github/" rel="tag">#Hexo github</a>
+            <a href="/tags/git/" rel="tag">#git</a>
           
         </div>
       
@@ -332,17 +402,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/24/hello-world/" rel="next" title="Hello World">
-                <i class="fa fa-chevron-left"></i> Hello World
+              <a href="/2016/09/28/Hexo博客优化的一些问题/" rel="next" title="Hexo博客优化的一些问题">
+                <i class="fa fa-chevron-left"></i> Hexo博客优化的一些问题
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/29/git添加远程库上传本地文件/" rel="prev" title="git添加远程库上传本地文件">
-                git添加远程库上传本地文件 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -368,8 +434,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/09/28/Hexo博客优化的一些问题/"
-           data-title="Hexo博客优化的一些问题" data-url="http://yoursite.com/2016/09/28/Hexo博客优化的一些问题/">
+      <div class="ds-thread" data-thread-key="2016/09/29/git添加远程库上传本地文件/"
+           data-title="git添加远程库上传本地文件" data-url="http://yoursite.com/2016/09/29/git添加远程库上传本地文件/">
       </div>
     
   </div>
@@ -478,7 +544,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#写在前面的话"><span class="nav-number">1.</span> <span class="nav-text">写在前面的话</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更新日志"><span class="nav-number">2.</span> <span class="nav-text">更新日志</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前期准备"><span class="nav-number">1.</span> <span class="nav-text">前期准备</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主要步骤"><span class="nav-number">2.</span> <span class="nav-text">主要步骤</span></a></li></ol></div>
             
           </div>
         </section>

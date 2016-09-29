@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-27T16:38:57.032Z</updated>
+  <updated>2016-09-29T05:05:57.846Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,83 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>git添加远程库上传本地文件</title>
+    <link href="http://yoursite.com/2016/09/29/git%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E5%BA%93%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6/"/>
+    <id>http://yoursite.com/2016/09/29/git添加远程库上传本地文件/</id>
+    <published>2016-09-29T03:03:34.000Z</published>
+    <updated>2016-09-29T05:05:57.846Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><ul>
+<li><p><a href="https://git-for-windows.github.io/" target="_blank" rel="external">安装git</a>；</p>
+</li>
+<li><p>注册github，并为账号添加SSH keys。</p>
+<h1 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h1><p><strong>1. 在github上创建新的仓库</strong><br>登录github后，点击页面右上角“+”号，选择“<br>new repository”进入页面，在“Repository name”输入框内填写你的仓库名，而后点击页面下方的“Create repository”按钮即可创建。</p>
+<a id="more"></a>
+</li>
+</ul>
+<p><strong>2. 创建本地仓库</strong><br>在本地选择一个地方创建一个文件夹，作为你的本地仓库，如在D盘创建一个名为”markdownPhoto”（一般与github仓库同名）的文件夹，用于存放markdown需要的图片。然后在本地仓库里放入你想放的内容，可以是单个文件，也可以是文件夹。 </p>
+<p><strong>3. 将本地仓库与github上的远程库建立关联</strong><br>在本地仓库点鼠标右键，选择“Git Bash Here”，调出命令框。运行命令：<br>    <code>$ git remote add origin git@github.com:goodKathy/markdownPhoto.git</code>  </p>
+<p>注意把代码里的“goodKathy”换成你自己的github用户名。</p>
+<p><strong>4.将本地仓库的内容推送到远程库中</strong><br>执行命令：<br>    <code>$ git push -u origin master</code>    </p>
+<p>在这里出现了一个报错：  </p>
+<pre><code>error: failed to push some refs to &apos;https://github.com/goodKathy/markdownPhoto.git&apos;
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., &apos;git pull ...&apos;) before pushing again.
+hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.  
+</code></pre><p>搜索了下，出现这个提示的原因是远程仓库里有内容更新，但本地仓库里没有更新，导致push失败。这时你需要把远程库里的内容先pull到本地仓库来，执行命令：<br>    <code>$ git pull origin master</code>  </p>
+<p>然而又出现报错：<br>    <code>fatal: refusing to merge unrelated histories</code>  </p>
+<p>又搜索了下解决方案，原来还需要添加可选项“–allow unrelated histories”，于是重新执行命令：<br>   <code>$ git pull origin master --allow unrelated histories</code></p>
+<p>提示需要输入commit message（即备注）：  </p>
+<pre><code>Merge branch &apos;master&apos; of github.com:goodKathy/markdownPhoto
+
+# Please enter a commit message to explain why this merge is necessary,
+# especially if it merges an updated upstream into a topic branch.
+#
+# Lines starting with &apos;#&apos; will be ignored, and an empty message aborts
+# the commit.
+</code></pre><p>输入后（我是直接把这个命令框关了，再git bash个新的命令框），远程仓库就同步到本地了。  </p>
+<p><strong>5. 在本地添加文件试试推送</strong><br>我在本地的markdownPhoto仓库里添加了一个叫images的文件夹，里面放了一张图“cow.jpg”。  </p>
+<blockquote>
+<p>注意： git不能管理空的文件夹，文件夹里必须有文件才能add.  </p>
+</blockquote>
+<p>接下来执行指令：<br>git add .<br>git commit -m “提交cow.jpg”<br>git push -u origin master    </p>
+<pre><code>Administrator@MICROSO-5A8UT0A MINGW32 /d/Program Files/markdownPhotos (master)
+$ git add .
+
+Administrator@MICROSO-5A8UT0A MINGW32 /d/Program Files/markdownPhotos (master)
+$ git commit -m &quot;提交cow.jpg&quot;
+On branch master
+Your branch is up-to-date with &apos;origin/master&apos;.
+nothing to commit, working tree clean
+
+Administrator@MICROSO-5A8UT0A MINGW32 /d/Program Files/markdownPhotos (master)
+$ git push -u origin master
+Branch master set up to track remote branch master from origin.
+Everything up-to-date  
+</code></pre><p>现在本地仓库的内容就同步到远程库了，刷新远程库页面，就会看到多了一个”images”的文件夹，点开一看，里面有个“cow.jpg”,点开这个图，点击“Download”按钮，便能获得图片地址，添加到markdown啦。之后需要推送新的内容，重复步骤5即可。  </p>
+<p>推荐下廖雪峰老师的<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">Git教程</a>，讲得很到位。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;前期准备&quot;&gt;&lt;a href=&quot;#前期准备&quot; class=&quot;headerlink&quot; title=&quot;前期准备&quot;&gt;&lt;/a&gt;前期准备&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://git-for-windows.github.io/&quot;&gt;安装git&lt;/a&gt;；&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;注册github，并为账号添加SSH keys。&lt;/p&gt;
+&lt;h1 id=&quot;主要步骤&quot;&gt;&lt;a href=&quot;#主要步骤&quot; class=&quot;headerlink&quot; title=&quot;主要步骤&quot;&gt;&lt;/a&gt;主要步骤&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;1. 在github上创建新的仓库&lt;/strong&gt;&lt;br&gt;登录github后，点击页面右上角“+”号，选择“&lt;br&gt;new repository”进入页面，在“Repository name”输入框内填写你的仓库名，而后点击页面下方的“Create repository”按钮即可创建。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Git" scheme="http://yoursite.com/categories/Git/"/>
+    
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>Hexo博客优化的一些问题</title>
