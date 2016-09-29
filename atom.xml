@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-29T05:05:57.846Z</updated>
+  <updated>2016-09-29T05:21:28.638Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,20 +20,20 @@
     <link href="http://yoursite.com/2016/09/29/git%E6%B7%BB%E5%8A%A0%E8%BF%9C%E7%A8%8B%E5%BA%93%E4%B8%8A%E4%BC%A0%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6/"/>
     <id>http://yoursite.com/2016/09/29/git添加远程库上传本地文件/</id>
     <published>2016-09-29T03:03:34.000Z</published>
-    <updated>2016-09-29T05:05:57.846Z</updated>
+    <updated>2016-09-29T05:21:28.638Z</updated>
     
     <content type="html"><![CDATA[<h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><ul>
 <li><p><a href="https://git-for-windows.github.io/" target="_blank" rel="external">安装git</a>；</p>
 </li>
 <li><p>注册github，并为账号添加SSH keys。</p>
-<h1 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h1><p><strong>1. 在github上创建新的仓库</strong><br>登录github后，点击页面右上角“+”号，选择“<br>new repository”进入页面，在“Repository name”输入框内填写你的仓库名，而后点击页面下方的“Create repository”按钮即可创建。</p>
-<a id="more"></a>
-</li>
+<h1 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h1></li>
 </ul>
-<p><strong>2. 创建本地仓库</strong><br>在本地选择一个地方创建一个文件夹，作为你的本地仓库，如在D盘创建一个名为”markdownPhoto”（一般与github仓库同名）的文件夹，用于存放markdown需要的图片。然后在本地仓库里放入你想放的内容，可以是单个文件，也可以是文件夹。 </p>
-<p><strong>3. 将本地仓库与github上的远程库建立关联</strong><br>在本地仓库点鼠标右键，选择“Git Bash Here”，调出命令框。运行命令：<br>    <code>$ git remote add origin git@github.com:goodKathy/markdownPhoto.git</code>  </p>
+<h2 id="1-在github上创建新的仓库"><a href="#1-在github上创建新的仓库" class="headerlink" title="1. 在github上创建新的仓库"></a>1. 在github上创建新的仓库</h2><p>登录github后，点击页面右上角“+”号，选择“<br>new repository”进入页面，在“Repository name”输入框内填写你的仓库名，而后点击页面下方的“Create repository”按钮即可创建。  </p>
+<a id="more"></a>
+<h2 id="2-创建本地仓库"><a href="#2-创建本地仓库" class="headerlink" title="2. 创建本地仓库"></a>2. 创建本地仓库</h2><p>在本地选择一个地方创建一个文件夹，作为你的本地仓库，如在D盘创建一个名为”markdownPhoto”（一般与github仓库同名）的文件夹，用于存放markdown需要的图片。然后在本地仓库里放入你想放的内容，可以是单个文件，也可以是文件夹。 </p>
+<h2 id="3-将本地仓库与github上的远程库建立关联"><a href="#3-将本地仓库与github上的远程库建立关联" class="headerlink" title="3. 将本地仓库与github上的远程库建立关联"></a>3. 将本地仓库与github上的远程库建立关联</h2><p>在本地仓库点鼠标右键，选择“Git Bash Here”，调出命令框。运行命令：<br>    <code>$ git remote add origin git@github.com:goodKathy/markdownPhoto.git</code>  </p>
 <p>注意把代码里的“goodKathy”换成你自己的github用户名。</p>
-<p><strong>4.将本地仓库的内容推送到远程库中</strong><br>执行命令：<br>    <code>$ git push -u origin master</code>    </p>
+<h2 id="4-将本地仓库的内容推送到远程库中"><a href="#4-将本地仓库的内容推送到远程库中" class="headerlink" title="4.将本地仓库的内容推送到远程库中"></a>4.将本地仓库的内容推送到远程库中</h2><p>执行命令：<br>    <code>$ git push -u origin master</code>    </p>
 <p>在这里出现了一个报错：  </p>
 <pre><code>error: failed to push some refs to &apos;https://github.com/goodKathy/markdownPhoto.git&apos;
 hint: Updates were rejected because the remote contains work that you do
@@ -53,11 +53,11 @@ hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos
 # Lines starting with &apos;#&apos; will be ignored, and an empty message aborts
 # the commit.
 </code></pre><p>输入后（我是直接把这个命令框关了，再git bash个新的命令框），远程仓库就同步到本地了。  </p>
-<p><strong>5. 在本地添加文件试试推送</strong><br>我在本地的markdownPhoto仓库里添加了一个叫images的文件夹，里面放了一张图“cow.jpg”。  </p>
+<h2 id="5-在本地添加文件试试推送"><a href="#5-在本地添加文件试试推送" class="headerlink" title="5. 在本地添加文件试试推送"></a>5. 在本地添加文件试试推送</h2><p>我在本地的markdownPhoto仓库里添加了一个叫images的文件夹，里面放了一张图“cow.jpg”。  </p>
 <blockquote>
 <p>注意： git不能管理空的文件夹，文件夹里必须有文件才能add.  </p>
 </blockquote>
-<p>接下来执行指令：<br>git add .<br>git commit -m “提交cow.jpg”<br>git push -u origin master    </p>
+<p>接下来执行指令：<br>git add .<br>git commit -m “提交cow.jpg”<br>git push -u origin master   </p>
 <pre><code>Administrator@MICROSO-5A8UT0A MINGW32 /d/Program Files/markdownPhotos (master)
 $ git add .
 
@@ -70,7 +70,7 @@ nothing to commit, working tree clean
 Administrator@MICROSO-5A8UT0A MINGW32 /d/Program Files/markdownPhotos (master)
 $ git push -u origin master
 Branch master set up to track remote branch master from origin.
-Everything up-to-date  
+Everything up-to-date   
 </code></pre><p>现在本地仓库的内容就同步到远程库了，刷新远程库页面，就会看到多了一个”images”的文件夹，点开一看，里面有个“cow.jpg”,点开这个图，点击“Download”按钮，便能获得图片地址，添加到markdown啦。之后需要推送新的内容，重复步骤5即可。  </p>
 <p>推荐下廖雪峰老师的<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">Git教程</a>，讲得很到位。</p>
 ]]></content>
@@ -81,7 +81,9 @@ Everything up-to-date
 &lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://git-for-windows.github.io/&quot;&gt;安装git&lt;/a&gt;；&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;注册github，并为账号添加SSH keys。&lt;/p&gt;
-&lt;h1 id=&quot;主要步骤&quot;&gt;&lt;a href=&quot;#主要步骤&quot; class=&quot;headerlink&quot; title=&quot;主要步骤&quot;&gt;&lt;/a&gt;主要步骤&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;1. 在github上创建新的仓库&lt;/strong&gt;&lt;br&gt;登录github后，点击页面右上角“+”号，选择“&lt;br&gt;new repository”进入页面，在“Repository name”输入框内填写你的仓库名，而后点击页面下方的“Create repository”按钮即可创建。&lt;/p&gt;
+&lt;h1 id=&quot;主要步骤&quot;&gt;&lt;a href=&quot;#主要步骤&quot; class=&quot;headerlink&quot; title=&quot;主要步骤&quot;&gt;&lt;/a&gt;主要步骤&lt;/h1&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;1-在github上创建新的仓库&quot;&gt;&lt;a href=&quot;#1-在github上创建新的仓库&quot; class=&quot;headerlink&quot; title=&quot;1. 在github上创建新的仓库&quot;&gt;&lt;/a&gt;1. 在github上创建新的仓库&lt;/h2&gt;&lt;p&gt;登录github后，点击页面右上角“+”号，选择“&lt;br&gt;new repository”进入页面，在“Repository name”输入框内填写你的仓库名，而后点击页面下方的“Create repository”按钮即可创建。  &lt;/p&gt;
     
     </summary>
     
@@ -97,7 +99,7 @@ Everything up-to-date
     <link href="http://yoursite.com/2016/09/28/Hexo%E5%8D%9A%E5%AE%A2%E4%BC%98%E5%8C%96%E7%9A%84%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
     <id>http://yoursite.com/2016/09/28/Hexo博客优化的一些问题/</id>
     <published>2016-09-27T16:37:40.000Z</published>
-    <updated>2016-09-27T16:38:57.032Z</updated>
+    <updated>2016-09-29T05:11:57.180Z</updated>
     
     <content type="html"><![CDATA[<h1 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h1><p>花了两三天，终于通过github pages+Hexo框架把博客给搭了起来。期间几乎每一个小小的进展，都遇到了一些阻碍。解决问题的思路总结：多谷歌，多百度。直接把错误提示往搜索框里一贴，定有不少前人踩过同样的坑并给出了解决方案。如没有满意的搜索结果，不妨换一种搜索方式。总之，多尝试，多试错，总会盼得柳暗花明。因计算机基础薄弱，这个解决的过程有着颇多不易，我是取得了一点点进展就会振臂高呼的。不少程序员给出的解决方案有一种既定假设，写出来的“专业术语”读者肯定能懂，所以有些步骤并没有讲得很详细，殊不知隔行如隔山，小白要多翻几个山头才能取得真经。我站在一个小白的角度，把自己在搭建博客过程中遇到的一些问题尽量以浅显易懂的方式解答，既让自己加深一下印象，也或许能让后来的小白少走些弯路。<br><a id="more"></a></p>
 <p>至于为什么要搭建这个博客呢，一是想学习编程，本来是想从零开始敲出来，深感进程艰难，后来在知乎看到一句话，大意是学习别人造好的轮子远比自己闷头乱敲进步得快。恍然大悟，赶紧撤下，悔时还不晚；二是觉得拥有自己的网站是一件很酷的事情；三是能有个安安静静的地方写些零碎，记些成长。</p>
@@ -119,8 +121,12 @@ Everything up-to-date
     
     </summary>
     
+      <category term="Hexo" scheme="http://yoursite.com/categories/Hexo/"/>
     
-      <category term="Hexo github" scheme="http://yoursite.com/tags/Hexo-github/"/>
+    
+      <category term="Hexo" scheme="http://yoursite.com/tags/Hexo/"/>
+    
+      <category term="github" scheme="http://yoursite.com/tags/github/"/>
     
   </entry>
   
