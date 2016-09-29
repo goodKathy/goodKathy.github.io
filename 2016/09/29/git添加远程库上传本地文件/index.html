@@ -98,7 +98,7 @@
 安装git；
 
 注册github，并为账号添加SSH keys。">
-<meta property="og:updated_time" content="2016-09-29T05:55:26.917Z">
+<meta property="og:updated_time" content="2016-09-29T09:10:55.107Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git添加远程库上传本地文件">
 <meta name="twitter:description" content="前期准备
@@ -326,53 +326,21 @@
 </ul>
 <a id="more"></a>
 <h1 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h1><h2 id="在github上创建新的仓库"><a href="#在github上创建新的仓库" class="headerlink" title="在github上创建新的仓库"></a>在github上创建新的仓库</h2><p>登录github后，点击页面右上角“+”号，选择“new repository”进入页面，在“Repository name”输入框内填写你的仓库名，而后点击页面下方的“Create repository”按钮即可创建。  </p>
-<h2 id="创建本地仓库"><a href="#创建本地仓库" class="headerlink" title="创建本地仓库"></a>创建本地仓库</h2><p>在本地选择一个地方创建一个文件夹，作为你的本地仓库，如在D盘创建一个名为”markdownPhoto”（一般与github仓库同名）的文件夹，用于存放markdown需要的图片。然后在本地仓库里放入你想放的内容，可以是单个文件，也可以是文件夹。 </p>
+<h2 id="创建本地仓库"><a href="#创建本地仓库" class="headerlink" title="创建本地仓库"></a>创建本地仓库</h2><p>在本地选择一个地方创建一个文件夹，作为你的本地仓库，如在D盘创建一个名为“markdownPhoto”（一般与github仓库同名）的文件夹，用于存放markdown需要的图片。然后在本地仓库里放入你想放的内容，可以是单个文件，也可以是文件夹。 </p>
 <h2 id="将本地仓库与github上的远程库建立关联"><a href="#将本地仓库与github上的远程库建立关联" class="headerlink" title="将本地仓库与github上的远程库建立关联"></a>将本地仓库与github上的远程库建立关联</h2><p>在本地仓库点鼠标右键，选择“Git Bash Here”，调出命令框。运行命令:       </p>
-<p><code>$ git remote add origin git@github.com:goodKathy/markdownPhoto.git</code> </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git remote add origin git@github.com:goodKathy/markdownPhoto.git</div></pre></td></tr></table></figure>
 <p>注意把代码里的“goodKathy”换成你自己的github用户名。</p>
-<h2 id="将本地仓库的内容推送到远程库中"><a href="#将本地仓库的内容推送到远程库中" class="headerlink" title="将本地仓库的内容推送到远程库中"></a>将本地仓库的内容推送到远程库中</h2><p>执行命令：   </p>
-<p><code>$ git push -u origin master</code> </p>
-<p>在这里出现了一个报错：   </p>
-<pre><code>error: failed to push some refs to &apos;https://github.com/goodKathy/markdownPhoto.git&apos;
-hint: Updates were rejected because the remote contains work that you do
-hint: not have locally. This is usually caused by another repository pushing
-hint: to the same ref. You may want to first integrate the remote changes
-hint: (e.g., &apos;git pull ...&apos;) before pushing again.
-hint: See the &apos;Note about fast-forwards&apos; in &apos;git push --help&apos; for details.  
-</code></pre><p>搜索了下，出现这个提示的原因是远程仓库里有内容更新，但本地仓库里没有更新，导致push失败。这时你需要把远程库里的内容先pull到本地仓库来，执行命令：   </p>
-<p><code>$ git pull origin master</code></p>
-<p>然而又出现报错：  </p>
-<p><code>fatal: refusing to merge unrelated histories</code></p>
-<p>又搜索了下解决方案，原来还需要添加可选项“–allow unrelated histories”，于是重新执行命令：</p>
-<p><code>$ git pull origin master --allow unrelated histories</code></p>
-<p>提示需要输入commit message（即备注）：  </p>
-<pre><code>Merge branch &apos;master&apos; of github.com:goodKathy/markdownPhoto
-
-# Please enter a commit message to explain why this merge is necessary,
-# especially if it merges an updated upstream into a topic branch.
-#
-# Lines starting with &apos;#&apos; will be ignored, and an empty message aborts
-# the commit.
-</code></pre><p>输入后（我是直接把这个命令框关了，再git bash个新的命令框），远程仓库就同步到本地了。  </p>
+<h2 id="将本地仓库的内容推送到远程库中"><a href="#将本地仓库的内容推送到远程库中" class="headerlink" title="将本地仓库的内容推送到远程库中"></a>将本地仓库的内容推送到远程库中</h2><p>执行命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$ git push -u origin master</div><div class="line">``` </div><div class="line">在这里出现了一个报错：   </div><div class="line">```bash</div><div class="line">error: failed to push some refs to <span class="string">'https://github.com/goodKathy/markdownPhoto.git'</span></div><div class="line">hint: Updates were rejected because the remote contains work that you <span class="keyword">do</span></div><div class="line">hint: not have locally. This is usually caused by another repository pushing</div><div class="line">hint: to the same ref. You may want to first integrate the remote changes</div><div class="line">hint: (e.g., <span class="string">'git pull ...'</span>) before pushing again.</div><div class="line">hint: See the <span class="string">'Note about fast-forwards'</span> <span class="keyword">in</span> <span class="string">'git push --help'</span> <span class="keyword">for</span> details.</div></pre></td></tr></table></figure></p>
+<p>搜索了下，出现这个提示的原因是远程仓库里有内容更新，但本地仓库里没有更新，导致push失败。这时你需要把远程库里的内容先pull到本地仓库来，执行命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git pull origin master</div></pre></td></tr></table></figure></p>
+<p>然而又出现报错：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">fatal: refusing to merge unrelated histories</div></pre></td></tr></table></figure></p>
+<p>又搜索了下解决方案，原来还需要添加可选项“–allow unrelated histories”，于是重新执行命令：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ git pull origin master --allow unrelated histories</div><div class="line">```  </div><div class="line">提示需要输入commit message（即备注）：  </div><div class="line">``` bash  </div><div class="line">Merge branch <span class="string">'master'</span> of github.com:goodKathy/markdownPhoto</div><div class="line">    </div><div class="line"><span class="comment"># Please enter a commit message to explain why this merge is necessary,</span></div><div class="line"><span class="comment"># especially if it merges an updated upstream into a topic branch.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Lines starting with '#' will be ignored, and an empty message aborts</span></div><div class="line"><span class="comment"># the commit.</span></div></pre></td></tr></table></figure></p>
+<p>输入后（我是直接把这个命令框关了，再git bash个新的命令框），远程仓库就同步到本地了。  </p>
 <h2 id="在本地添加文件试试推送"><a href="#在本地添加文件试试推送" class="headerlink" title="在本地添加文件试试推送"></a>在本地添加文件试试推送</h2><p>我在本地的markdownPhoto仓库里添加了一个叫images的文件夹，里面放了一张图“cow.jpg”。  </p>
 <blockquote>
 <p>注意： git不能管理空的文件夹，文件夹里必须有文件才能add .  </p>
 </blockquote>
-<p>接下来执行指令：<br>git add .<br>git commit -m “提交cow.jpg”<br>git push -u origin master   </p>
-<pre><code>Administrator@MICROSO-5A8UT0A MINGW32 /d/Program Files/markdownPhotos (master)
-$ git add .
-
-Administrator@MICROSO-5A8UT0A MINGW32 /d/Program Files/markdownPhotos (master)
-$ git commit -m &quot;提交cow.jpg&quot;
-On branch master
-Your branch is up-to-date with &apos;origin/master&apos;.
-nothing to commit, working tree clean
-
-Administrator@MICROSO-5A8UT0A MINGW32 /d/Program Files/markdownPhotos (master)
-$ git push -u origin master
-Branch master set up to track remote branch master from origin.
-Everything up-to-date  
-</code></pre><p>现在本地仓库的内容就同步到远程库了，刷新远程库页面，就会看到多了一个”images”的文件夹，点开一看，里面有个“cow.jpg”,点开这个图，点击“Download”按钮，便能获得图片地址，添加到markdown啦。之后需要推送新的内容，重复步骤5即可。  </p>
+<p>接下来执行指令：<br>git add .<br>git commit -m “提交cow.jpg”<br>git push -u origin master<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">Administrator@MICROSO-5A8UT0A MINGW32 /d/Program Files/markdownPhotos (master)</div><div class="line">$ git add .</div><div class="line">    </div><div class="line">Administrator@MICROSO-5A8UT0A MINGW32 /d/Program Files/markdownPhotos (master)</div><div class="line">$ git commit -m <span class="string">"提交cow.jpg"</span></div><div class="line">On branch master</div><div class="line">Your branch is up-to-date with <span class="string">'origin/master'</span>.</div><div class="line">nothing to commit, working tree clean</div><div class="line">    </div><div class="line">Administrator@MICROSO-5A8UT0A MINGW32 /d/Program Files/markdownPhotos (master)</div><div class="line">$ git push -u origin master</div><div class="line">Branch master <span class="built_in">set</span> up to track remote branch master from origin.</div><div class="line">Everything up-to-date</div></pre></td></tr></table></figure></p>
+<p>现在本地仓库的内容就同步到远程库了，刷新远程库页面，就会看到多了一个”images”的文件夹，点开一看，里面有个“cow.jpg”,点开这个图，点击“Download”按钮，便能获得图片地址，添加到markdown啦。之后需要推送新的内容，重复这个步骤即可。  </p>
 <p>推荐下廖雪峰老师的<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">Git教程</a>，讲得很到位。</p>
 
       
