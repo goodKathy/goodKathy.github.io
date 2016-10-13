@@ -73,8 +73,6 @@
 
 
 
-  
-
 
   <link rel="alternate" href="/atom.xml" title="周小树" type="application/atom+xml" />
 
@@ -88,16 +86,78 @@
 
 
 
-<meta name="description" content="有点较真，很多好奇">
+<meta name="description" content="Image Gallery
+	
+
+
+	Snapshots
+	
+	    
+	  	  lake
+	    
+	    
+	  	  cow
+	    
+	    
+	  	  sky
+	    
+	    
+	  	  stone
+	    
+	
+	
+	Choose an image.">
 <meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="http://yoursite.com/categories/index.html">
+<meta property="og:title" content="周小树">
+<meta property="og:url" content="http://yoursite.com/demo/gallery.html">
 <meta property="og:site_name" content="周小树">
-<meta property="og:description" content="有点较真，很多好奇">
-<meta property="og:updated_time" content="2016-09-27T03:20:33.638Z">
+<meta property="og:description" content="Image Gallery
+	
+
+
+	Snapshots
+	
+	    
+	  	  lake
+	    
+	    
+	  	  cow
+	    
+	    
+	  	  sky
+	    
+	    
+	  	  stone
+	    
+	
+	
+	Choose an image.">
+<meta property="og:image" content="http://yoursite.com/images/placeholder.jpg">
+<meta property="og:updated_time" content="2016-09-28T10:40:35.408Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分类">
-<meta name="twitter:description" content="有点较真，很多好奇">
+<meta name="twitter:title" content="周小树">
+<meta name="twitter:description" content="Image Gallery
+	
+
+
+	Snapshots
+	
+	    
+	  	  lake
+	    
+	    
+	  	  cow
+	    
+	    
+	  	  sky
+	    
+	    
+	  	  stone
+	    
+	
+	
+	Choose an image.">
+<meta name="twitter:image" content="http://yoursite.com/images/placeholder.jpg">
 
 
 
@@ -119,7 +179,7 @@
   
 
   
-    Catégorie | 周小树
+     | 周小树
   
 </title>
 </head>
@@ -243,14 +303,36 @@
   <div id="posts" class="posts-expand">
     
     
-      <div class="category-all-page">
-        <div class="category-all-title">
-            2 categories au total
-        </div>
-        <div class="category-all">
-          <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Git/">Git</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li></ul>
-        </div>
-      </div>
+      <!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Image Gallery</title>
+	<link rel="stylesheet" href="styles/layout.css" type="text/css">
+</head>
+<body>
+	<h1>Snapshots</h1>
+	<ul id="imagegallery">
+	    <li>
+	  	  <a href="images/lake.jpg" title="big lake">lake</a>
+	    </li>
+	    <li>
+	  	  <a href="images/cow.jpg" title="small cow">cow</a>
+	    </li>
+	    <li>
+	  	  <a href="images/sky.jpg" title="pure sky">sky</a>
+	    </li>
+	    <li>
+	  	  <a href="images/stone.jpg" title="two stones">stone</a>
+	    </li>
+	</ul>
+	<img id="placeholder" src="images/placeholder.jpg" alt="my image gallery">
+	<p id="description">Choose an image.</p>
+    <script type="text/javascript" src="scripts/showPic.js"></script>
+</body>
+</html>
+
+
     
   </div>
 
@@ -260,6 +342,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="demo/gallery.html"
+           data-title="" data-url="http://yoursite.com/demo/gallery.html">
+      </div>
+    
+  </div>
+
 
         </div>
         
