@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-29T09:50:26.330Z</updated>
+  <updated>2016-10-18T03:30:27.216Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,33 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>几个有用的javascript DOM函数</title>
+    <link href="http://yoursite.com/2016/10/18/%E5%87%A0%E4%B8%AA%E6%9C%89%E7%94%A8%E7%9A%84javascript-DOM%E5%87%BD%E6%95%B0/"/>
+    <id>http://yoursite.com/2016/10/18/几个有用的javascript-DOM函数/</id>
+    <published>2016-10-18T02:31:38.000Z</published>
+    <updated>2016-10-18T03:30:27.216Z</updated>
+    
+    <content type="html"><![CDATA[<p>《JavaScript DOM编程艺术》一书中一些有用的函数，可以收录进脚本。<br><a id="more"></a></p>
+<h2 id="addLoadEvent函数"><a href="#addLoadEvent函数" class="headerlink" title="addLoadEvent函数"></a>addLoadEvent函数</h2><p>假如你在页面加载完毕时需执行多个函数，如把它们逐一绑定到onload事件上，只有最后绑定的函数才会实际执行。如需绑定的函数不是很多，可创建匿名函数来容纳多个函数，然后把匿名函数绑定到onload事件上。而如果函数过多，则可通过addLoadEvent（）把这些函数创建为一个队列，逐一执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//把现有的window.onload事件处理函数的值存入变量onload</span></div><div class="line"><span class="comment">//如果在这个处理函数上还未绑定任何函数，就像平时那样把新函数添加给它</span></div><div class="line"><span class="comment">//如果在这个处理函数上已经绑定了一些函数，就把新函数追加到现有指令的末尾</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addLoadEvent</span>(<span class="params">func</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> oldonload=<span class="built_in">window</span>.onload;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">window</span>.onload!=<span class="string">'function'</span>)&#123;</div><div class="line">        <span class="built_in">window</span>.onload=func;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            oldonload();</div><div class="line">            func();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">addLoadEvent(firstFunction);</div><div class="line">addLoadEvent(secondFunction);</div></pre></td></tr></table></figure>
+<h2 id="insertAfter函数"><a href="#insertAfter函数" class="headerlink" title="insertAfter函数"></a>insertAfter函数</h2><p>虽然DOM本身没有提供inserAfter方法，但它提供了把一个节点插入到另一个节点之后所需的所有工具。可利用已有的DOM方法和属性编写一个insertAfter函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertAfter</span>(<span class="params">newElement,targetElement</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> parent=targetElement.parentNode;</div><div class="line">    <span class="keyword">if</span>(parent.lastChild==targetElement)&#123;</div><div class="line">        parent.appendChild(newElement);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        parent.insertBefore(newElement,targetElement.nextSibling);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;《JavaScript DOM编程艺术》一书中一些有用的函数，可以收录进脚本。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="javaScript" scheme="http://yoursite.com/categories/javaScript/"/>
+    
+    
+      <category term="javaScript" scheme="http://yoursite.com/tags/javaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>git添加远程库上传本地文件</title>

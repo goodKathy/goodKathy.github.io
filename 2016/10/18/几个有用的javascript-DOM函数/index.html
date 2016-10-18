@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="javaScript," />
 
 
 
@@ -86,15 +86,16 @@
 
 
 
-<meta name="description" content="有点较真，很多好奇">
-<meta property="og:type" content="website">
-<meta property="og:title" content="周小树">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="《JavaScript DOM编程艺术》一书中一些有用的函数，可以收录进脚本。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="几个有用的javascript DOM函数">
+<meta property="og:url" content="http://yoursite.com/2016/10/18/几个有用的javascript-DOM函数/index.html">
 <meta property="og:site_name" content="周小树">
-<meta property="og:description" content="有点较真，很多好奇">
+<meta property="og:description" content="《JavaScript DOM编程艺术》一书中一些有用的函数，可以收录进脚本。">
+<meta property="og:updated_time" content="2016-10-18T03:30:27.216Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="周小树">
-<meta name="twitter:description" content="有点较真，很多好奇">
+<meta name="twitter:title" content="几个有用的javascript DOM函数">
+<meta name="twitter:description" content="《JavaScript DOM编程艺术》一书中一些有用的函数，可以收录进脚本。">
 
 
 
@@ -112,7 +113,7 @@
   };
 </script>	
 
-  <title> 周小树 </title>
+  <title> 几个有用的javascript DOM函数 | 周小树 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -133,9 +134,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -232,9 +231,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -254,10 +253,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/10/18/几个有用的javascript-DOM函数/" itemprop="url">
-                  几个有用的javascript DOM函数
-                </a>
+                几个有用的javascript DOM函数
               
             
           </h1>
@@ -323,394 +319,64 @@
       
 
       
-        
-          <p>《JavaScript DOM编程艺术》一书中一些有用的函数，可以收录进脚本。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/10/18/几个有用的javascript-DOM函数/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
+        <p>《JavaScript DOM编程艺术》一书中一些有用的函数，可以收录进脚本。<br><a id="more"></a></p>
+<h2 id="addLoadEvent函数"><a href="#addLoadEvent函数" class="headerlink" title="addLoadEvent函数"></a>addLoadEvent函数</h2><p>假如你在页面加载完毕时需执行多个函数，如把它们逐一绑定到onload事件上，只有最后绑定的函数才会实际执行。如需绑定的函数不是很多，可创建匿名函数来容纳多个函数，然后把匿名函数绑定到onload事件上。而如果函数过多，则可通过addLoadEvent（）把这些函数创建为一个队列，逐一执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//把现有的window.onload事件处理函数的值存入变量onload</span></div><div class="line"><span class="comment">//如果在这个处理函数上还未绑定任何函数，就像平时那样把新函数添加给它</span></div><div class="line"><span class="comment">//如果在这个处理函数上已经绑定了一些函数，就把新函数追加到现有指令的末尾</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">addLoadEvent</span>(<span class="params">func</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> oldonload=<span class="built_in">window</span>.onload;</div><div class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> <span class="built_in">window</span>.onload!=<span class="string">'function'</span>)&#123;</div><div class="line">        <span class="built_in">window</span>.onload=func;</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        <span class="built_in">window</span>.onload=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            oldonload();</div><div class="line">            func();</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">addLoadEvent(firstFunction);</div><div class="line">addLoadEvent(secondFunction);</div></pre></td></tr></table></figure>
+<h2 id="insertAfter函数"><a href="#insertAfter函数" class="headerlink" title="insertAfter函数"></a>insertAfter函数</h2><p>虽然DOM本身没有提供inserAfter方法，但它提供了把一个节点插入到另一个节点之后所需的所有工具。可利用已有的DOM方法和属性编写一个insertAfter函数。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">insertAfter</span>(<span class="params">newElement,targetElement</span>)</span>&#123;</div><div class="line">    <span class="keyword">var</span> parent=targetElement.parentNode;</div><div class="line">    <span class="keyword">if</span>(parent.lastChild==targetElement)&#123;</div><div class="line">        parent.appendChild(newElement);</div><div class="line">    &#125;<span class="keyword">else</span>&#123;</div><div class="line">        parent.insertBefore(newElement,targetElement.nextSibling);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    <div>
+      
         
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/29/git添加远程库上传本地文件/" itemprop="url">
-                  git添加远程库上传本地文件
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-29T11:03:34+08:00" content="2016-09-29">
-              2016-09-29
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Git/" itemprop="url" rel="index">
-                    <span itemprop="name">Git</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/29/git添加远程库上传本地文件/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/29/git添加远程库上传本地文件/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/javaScript/" rel="tag">#javaScript</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h1 id="前期准备"><a href="#前期准备" class="headerlink" title="前期准备"></a>前期准备</h1><ul>
-<li><p><a href="https://git-for-windows.github.io/">安装git</a>；</p>
-</li>
-<li><p>注册github，并为账号添加SSH keys。</p>
-</li>
-</ul>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/29/git添加远程库上传本地文件/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/29/git添加远程库上传本地文件/" rel="next" title="git添加远程库上传本地文件">
+                <i class="fa fa-chevron-left"></i> git添加远程库上传本地文件
+              </a>
+            
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+          <div class="post-nav-prev post-nav-item">
             
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/28/Hexo博客优化的一些问题/" itemprop="url">
-                  Hexo博客优化的一些问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-28T00:37:40+08:00" content="2016-09-28">
-              2016-09-28
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Hexo/" itemprop="url" rel="index">
-                    <span itemprop="name">Hexo</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/28/Hexo博客优化的一些问题/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/28/Hexo博客优化的一些问题/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          <h1 id="写在前面的话"><a href="#写在前面的话" class="headerlink" title="写在前面的话"></a>写在前面的话</h1><p>花了两三天，终于通过github pages+Hexo框架把博客给搭了起来。期间几乎每一个小小的进展，都遇到了一些阻碍。解决问题的思路总结：多谷歌，多百度。直接把错误提示往搜索框里一贴，定有不少前人踩过同样的坑并给出了解决方案。如没有满意的搜索结果，不妨换一种搜索方式。总之，多尝试，多试错，总会盼得柳暗花明。因计算机基础薄弱，这个解决的过程有着颇多不易，我是取得了一点点进展就会振臂高呼的。不少程序员给出的解决方案有一种既定假设，写出来的“专业术语”读者肯定能懂，所以有些步骤并没有讲得很详细，殊不知隔行如隔山，小白要多翻几个山头才能取得真经。我站在一个小白的角度，把自己在搭建博客过程中遇到的一些问题尽量以浅显易懂的方式解答，既让自己加深一下印象，也或许能让后来的小白少走些弯路。<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/28/Hexo博客优化的一些问题/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/24/hello-world/" itemprop="url">
-                  Hello World
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-24T10:25:59+08:00" content="2016-09-24">
-              2016-09-24
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/24/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/24/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.<br>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/24/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -718,6 +384,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/10/18/几个有用的javascript-DOM函数/"
+           data-title="几个有用的javascript DOM函数" data-url="http://yoursite.com/2016/10/18/几个有用的javascript-DOM函数/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -737,8 +411,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/tree.jpg"
@@ -806,6 +489,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#addLoadEvent函数"><span class="nav-number">1.</span> <span class="nav-text">addLoadEvent函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#insertAfter函数"><span class="nav-number">2.</span> <span class="nav-text">insertAfter函数</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -902,6 +596,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
