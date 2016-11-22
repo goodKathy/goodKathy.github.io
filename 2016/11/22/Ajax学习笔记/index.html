@@ -92,7 +92,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/11/22/Ajax学习笔记/index.html">
 <meta property="og:site_name" content="周小树">
 <meta property="og:description" content="Ajax定义AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。">
-<meta property="og:updated_time" content="2016-11-22T09:35:42.279Z">
+<meta property="og:updated_time" content="2016-11-22T09:37:56.778Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ajax学习笔记">
 <meta name="twitter:description" content="Ajax定义AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。">
@@ -400,8 +400,8 @@
 <p><strong>2.readyState</strong><br>存有 <code>XMLHttpRequest</code> 的状态。从 0 到 4 发生变化。</p>
 <ul>
 <li>0：未初始化。尚未调用 <code>open()</code> 方法</li>
-<li>1：启动。已调用 open() 方法，尚未调用 send() 方法</li>
-<li>2：发送数据。 已调用 send() 方法，尚未接收到响应</li>
+<li>1：启动。已调用 <code>open()</code> 方法，尚未调用 <code>send()</code> 方法</li>
+<li>2：发送数据。 已调用 <code>send()</code> 方法，尚未接收到响应</li>
 <li>3：已接收部分响应数据</li>
 <li>4：已接收全部响应数据，可以在客户端使用了</li>
 </ul>
@@ -411,7 +411,7 @@
 <li>404：未找到页面</li>
 <li>500：出现内部服务器错误</li>
 </ul>
-<p>在 <code>onreadystatechange</code> 事件中，我们规定当服务器响应已做好被处理的准备时所执行的任务。当 <code>readyState</code> 等于 4 且状态为 200 时，表示响应已就绪：</p>
+<p>在 <code>onreadystatechange</code> 事件中，规定当服务器响应已做好被处理的准备时所执行的任务。当 <code>readyState</code> 等于 4 且状态为 200 时，表示响应已就绪：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">xmlhttp.onreadystatechange=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></div><div class="line">  &#123;</div><div class="line">  <span class="keyword">if</span> (xmlhttp.readyState==<span class="number">4</span> &amp;&amp; xmlhttp.status==<span class="number">200</span>)</div><div class="line">    &#123;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=xmlhttp.responseText;</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
 <p><code>onreadystatechange</code> 事件被触发 5 次（0 - 4），对应着 <code>readyState</code> 的每个变化。</p>
 <p><strong>使用 Callback 函数</strong></p>
