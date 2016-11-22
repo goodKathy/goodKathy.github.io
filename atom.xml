@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-10-20T04:56:52.325Z</updated>
+  <updated>2016-11-22T09:35:42.279Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,133 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Ajax学习笔记</title>
+    <link href="http://yoursite.com/2016/11/22/Ajax%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://yoursite.com/2016/11/22/Ajax学习笔记/</id>
+    <published>2016-11-22T07:58:11.000Z</published>
+    <updated>2016-11-22T09:35:42.279Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Ajax定义"><a href="#Ajax定义" class="headerlink" title="Ajax定义"></a>Ajax定义</h2><p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。<br><a id="more"></a><br><code>Ajax</code> 不是一种新的编程语言，而是一种在无需重新加载整个网页的情况下，通过在后台与服务器进行少量数据交换，使网页实现异步更新的技术。可用于创建快速动态网页。</p>
+<h2 id="Ajax工作原理"><a href="#Ajax工作原理" class="headerlink" title="Ajax工作原理"></a>Ajax工作原理</h2><p><code>XMLHttpRequest</code> 是 <code>Ajax</code> 的基础。用于在后台与服务器交换数据。所有现代浏览器（IE7+、Firefox、Chrome、Safari 以及 Opera）均内建 <code>XMLHttpRequest</code> 对象。</p>
+<h3 id="创建XMLHttpRequest对象"><a href="#创建XMLHttpRequest对象" class="headerlink" title="创建XMLHttpRequest对象"></a>创建XMLHttpRequest对象</h3><p>1.现代浏览器：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">variable=<span class="keyword">new</span> XMLHttpRequest();</div></pre></td></tr></table></figure>
+<p>2.老版本的 IE5、IE6 使用 <code>ActiveX</code> 对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">variable=<span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div></pre></td></tr></table></figure>
+<p>为应对所有的现代浏览器，包括 IE5 和 IE6，需检查浏览器是否支持 <code>XMLHttpRequest</code> 对象。如果支持，则创建 <code>XMLHttpRequest</code> 对象。如果不支持，则创建 <code>ActiveXObject</code> ：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> xmlhttp;</div><div class="line"><span class="keyword">if</span> (<span class="built_in">window</span>.XMLHttpRequest)</div><div class="line">  &#123;<span class="comment">// 如为 IE7+, Firefox, Chrome, Opera, Safari 浏览器</span></div><div class="line">  xmlhttp=<span class="keyword">new</span> XMLHttpRequest();</div><div class="line">  &#125;</div><div class="line"><span class="keyword">else</span></div><div class="line">  &#123;<span class="comment">// 如为 IE6, IE5 浏览器</span></div><div class="line">  xmlhttp=<span class="keyword">new</span> ActiveXObject(<span class="string">"Microsoft.XMLHTTP"</span>);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h3 id="向服务器发送请求"><a href="#向服务器发送请求" class="headerlink" title="向服务器发送请求"></a>向服务器发送请求</h3><h4 id="发送请求的方法"><a href="#发送请求的方法" class="headerlink" title="发送请求的方法"></a>发送请求的方法</h4><p>如要将请求发送到服务器，需使用 <code>XMLHttpRequest</code> 对象的 <code>open()</code> 和 <code>send()</code> 方法：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"test1.txt"</span>,<span class="literal">true</span>);</div><div class="line">xmlhttp.send();</div></pre></td></tr></table></figure>
+<p><strong>1. open(method, url, async)</strong></p>
+<p>规定请求的类型、url 以及是否异步处理请求。</p>
+<ul>
+<li>method：请求的类型；<code>GET</code> 或 <code>POST</code></li>
+<li>url：文件在服务器上的位置</li>
+<li>async：<code>true</code>（异步）或 <code>false</code>（同步）</li>
+</ul>
+<p><strong>2. send(string)</strong></p>
+<p>将请求发送到服务器。string：仅用于 <code>POST</code> 请求。</p>
+<h4 id="GET-还是-POST？"><a href="#GET-还是-POST？" class="headerlink" title="GET 还是 POST？"></a>GET 还是 POST？</h4><p><code>GET</code> 是最常见的请求类型，最常用于向服务器查询某些信息。必要时，可以将查询字符串参数追加到 <code>url</code> 的末尾，以便将信息发送给服务器。</p>
+<p><code>POST</code> 通常用于向服务器发送应该被保存的数据。</p>
+<p>与 <code>POST</code> 相比，<code>GET</code> 更简单也更快，并且在大部分情况下都能用。然而，在以下情况中，请使用 <code>POST</code> 请求：</p>
+<ul>
+<li>无法使用缓存文件（更新服务器上的文件或数据库）</li>
+<li>向服务器发送大量数据（ <code>POST</code> 没有数据量限制）</li>
+<li>发送包含未知字符的用户输入时，<code>POST</code> 比 <code>GET</code> 更稳定也更可靠</li>
+</ul>
+<p><strong>一个简单的 GET 请求：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"demo_get.asp"</span>,<span class="literal">true</span>);</div><div class="line">xmlhttp.send();</div></pre></td></tr></table></figure>
+<p>上面的例子得到的可能是缓存的结果。为避免这种情况，需向 <code>url</code> 添加一个唯一的 <code>ID</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"demo_get.asp?t="</span> + <span class="built_in">Math</span>.random(),<span class="literal">true</span>);</div><div class="line">xmlhttp.send();</div></pre></td></tr></table></figure>
+<p>如要通过 <code>GET</code> 方法发送信息，需向 <code>url</code> 添加信息：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"demo_get2.asp?fname=Bill&amp;lname=Gates"</span>,<span class="literal">true</span>);</div><div class="line">xmlhttp.send();</div></pre></td></tr></table></figure>
+<p><strong>一个简单 POST 请求：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">xmlhttp.open(<span class="string">"POST"</span>,<span class="string">"demo_post.asp"</span>,<span class="literal">true</span>);</div><div class="line">xmlhttp.send();</div></pre></td></tr></table></figure>
+<p>如要像 <code>HTML</code> 表单那样<code>POST</code> 数据，需使用 <code>setRequestHeader()</code> 来添加 <code>HTTP</code> 头。然后在 <code>send()</code> 方法中规定希望发送的数据：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xmlhttp.open(<span class="string">"POST"</span>,<span class="string">"ajax_test.asp"</span>,<span class="literal">true</span>);</div><div class="line">xmlhttp.setRequestHeader(<span class="string">"Content-type"</span>,<span class="string">"application/x-www-form-urlencoded"</span>);</div><div class="line">xmlhttp.send(<span class="string">"fname=Bill&amp;lname=Gates"</span>);</div></pre></td></tr></table></figure>
+<p><strong>setRequestHeader(header,value)</strong><br>向请求添加 <code>HTTP</code> 头。</p>
+<ul>
+<li>header：规定头的名称</li>
+<li>value：规定头的值</li>
+</ul>
+<h4 id="参数详解"><a href="#参数详解" class="headerlink" title="参数详解"></a>参数详解</h4><p><strong>1. url</strong><br>服务器上的文件地址。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"ajax_test.asp"</span>,<span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<p>该文件可以是任何类型的文件，比如 <code>.txt</code> 和 <code>.xml</code> ，或者服务器脚本文件，比如 <code>.asp</code> 和 <code>.php</code> （在传回响应之前，能够在服务器上执行任务）。</p>
+<p><strong>2. 异步: True 或 False</strong><br><code>Ajax</code> 指的是异步 JavaScript 和 XML（Asynchronous JavaScript and XML）。</p>
+<p><code>XMLHttpRequest</code> 对象如果要用于 <code>Ajax</code> 的话，其 <code>open()</code> 方法的 <code>async</code> 参数必须设置为 <code>true</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"ajax_test.asp"</span>,<span class="literal">true</span>);</div></pre></td></tr></table></figure>
+<p>通过 <code>Ajax</code>，<code>JavaScript</code> 无需等待服务器的响应，而是：</p>
+<ul>
+<li>在等待服务器响应时执行其他脚本</li>
+<li>当响应就绪后对响应进行处理</li>
+</ul>
+<p><strong>Async = true</strong></p>
+<p>当使用 <code>async=true</code> 时，请规定在处于 <code>onreadystatechange</code> 事件中的响应就绪时执行的函数：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">xmlhttp.onreadystatechange=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></div><div class="line">  &#123;</div><div class="line">  <span class="keyword">if</span> (xmlhttp.readyState==<span class="number">4</span> &amp;&amp; xmlhttp.status==<span class="number">200</span>)</div><div class="line">    &#123;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=xmlhttp.responseText;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"test1.txt"</span>,<span class="literal">true</span>);</div><div class="line">xmlhttp.send();</div></pre></td></tr></table></figure>
+<p><strong>Async = false</strong><br>如需使用 <code>async=false</code> ，请将 <code>open()</code> 方法中的第三个参数改为 <code>false</code>：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"test1.txt"</span>,<span class="literal">false</span>);</div></pre></td></tr></table></figure>
+<p>一般不推荐使用 <code>async=false</code> ，但是对于一些小型的请求，也是可以的。请记住，<code>JavaScript</code> 会等到服务器响应就绪才继续执行。如果服务器繁忙或缓慢，应用程序会挂起或停止。</p>
+<p>当使用 <code>async=false</code> 时，无需编写 <code>onreadystatechange</code> 函数 ，把代码放到 <code>send()</code> 语句后面即可：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">xmlhttp.open(<span class="string">"GET"</span>,<span class="string">"test1.txt"</span>,<span class="literal">false</span>);</div><div class="line">xmlhttp.send();</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=xmlhttp.responseText;</div></pre></td></tr></table></figure>
+<h3 id="服务器响应"><a href="#服务器响应" class="headerlink" title="服务器响应"></a>服务器响应</h3><p>如需获得来自服务器的响应，请使用 <code>XMLHttpRequest</code> 对象的 <code>responseText</code> 或 <code>responseXML</code> 属性。</p>
+<ul>
+<li><p>responseText：获得字符串形式的响应数据。</p>
+</li>
+<li><p>responseXML：获得 <code>XML</code> 形式的响应数据。</p>
+</li>
+</ul>
+<p><strong>responseText 属性</strong></p>
+<p>如果来自服务器的响应并非 <code>XML</code> ，请使用 <code>responseText</code> 属性。<br><code>responseText</code> 属性返回字符串形式的响应，因此可以这样使用：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=xmlhttp.responseText;</div></pre></td></tr></table></figure>
+<p><strong>responseXML 属性</strong></p>
+<p>如果来自服务器的响应是 <code>XML</code>，而且需要作为 <code>XML</code> 对象进行解析，请使用 <code>responseXML</code> 属性。</p>
+<p>请求 <code>books.xml</code> 文件，并解析响应：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">xmlDoc=xmlhttp.responseXML;</div><div class="line">txt=<span class="string">""</span>;</div><div class="line">x=xmlDoc.getElementsByTagName(<span class="string">"title"</span>);</div><div class="line"><span class="keyword">for</span> (i=<span class="number">0</span>;i&lt;x.length;i++)</div><div class="line">  &#123;</div><div class="line">  txt=txt + x[i].childNodes[<span class="number">0</span>].nodeValue + <span class="string">"&lt;br /&gt;"</span>;</div><div class="line">  &#125;</div><div class="line"><span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=txt;</div></pre></td></tr></table></figure>
+<h3 id="onreadystatechange-事件"><a href="#onreadystatechange-事件" class="headerlink" title="onreadystatechange 事件"></a>onreadystatechange 事件</h3><p>当请求被发送到服务器时，我们需要执行一些基于响应的任务。每当 <code>readyState</code> 改变时，就会触发 <code>onreadystatechange</code> 事件。<code>readyState</code> 属性存有 <code>XMLHttpRequest</code> 的状态信息。</p>
+<p><code>XMLHttpRequest</code> 对象的三个重要属性：</p>
+<p><strong>1.onreadystatechange    </strong><br>存储函数（或函数名），每当 <code>readyState</code> 属性改变时，就会调用该函数。</p>
+<p><strong>2.readyState</strong><br>存有 <code>XMLHttpRequest</code> 的状态。从 0 到 4 发生变化。</p>
+<ul>
+<li>0：未初始化。尚未调用 <code>open()</code> 方法</li>
+<li>1：启动。已调用 open() 方法，尚未调用 send() 方法</li>
+<li>2：发送数据。 已调用 send() 方法，尚未接收到响应</li>
+<li>3：已接收部分响应数据</li>
+<li>4：已接收全部响应数据，可以在客户端使用了</li>
+</ul>
+<p><strong>3.status</strong>    </p>
+<ul>
+<li>200：成功处理请求</li>
+<li>404：未找到页面</li>
+<li>500：出现内部服务器错误</li>
+</ul>
+<p>在 <code>onreadystatechange</code> 事件中，我们规定当服务器响应已做好被处理的准备时所执行的任务。当 <code>readyState</code> 等于 4 且状态为 200 时，表示响应已就绪：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">xmlhttp.onreadystatechange=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></div><div class="line">  &#123;</div><div class="line">  <span class="keyword">if</span> (xmlhttp.readyState==<span class="number">4</span> &amp;&amp; xmlhttp.status==<span class="number">200</span>)</div><div class="line">    &#123;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=xmlhttp.responseText;</div><div class="line">    &#125;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p><code>onreadystatechange</code> 事件被触发 5 次（0 - 4），对应着 <code>readyState</code> 的每个变化。</p>
+<p><strong>使用 Callback 函数</strong></p>
+<p>Callback 翻译为回调函数。它以参数的形式传递给另一个函数，当另一个函数执行完成后开始执行。<br>如果要执行多个 <code>Ajax</code> 任务，就应该为创建 <code>XMLHttpRequest</code> 对象编写一个标准的函数，并为每个 <code>Ajax</code> 任务调用该函数。</p>
+<p>该函数调用应该包含 <code>url</code> 以及发生 <code>onreadystatechange</code> 事件时在页面中调用的回调函数（每次调用可能不尽相同）：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>)</span>&#123;</div><div class="line">loadXMLDoc(<span class="string">"ajax_info.txt"</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span></div><div class="line">  &#123;</div><div class="line">  <span class="keyword">if</span> (xmlhttp.readyState==<span class="number">4</span> &amp;&amp; xmlhttp.status==<span class="number">200</span>)</div><div class="line">    &#123;</div><div class="line">    <span class="built_in">document</span>.getElementById(<span class="string">"myDiv"</span>).innerHTML=xmlhttp.responseText;</div><div class="line">    &#125;</div><div class="line">  &#125;);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>本文内容主要摘录于 W3School 的 <a href="http://www.w3school.com.cn/example/ajax_examples.asp" target="_blank" rel="external">Ajax教程</a>。查看<a href="http://www.w3school.com.cn/example/ajax_examples.asp" target="_blank" rel="external">Ajax实例</a>。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Ajax定义&quot;&gt;&lt;a href=&quot;#Ajax定义&quot; class=&quot;headerlink&quot; title=&quot;Ajax定义&quot;&gt;&lt;/a&gt;Ajax定义&lt;/h2&gt;&lt;p&gt;AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="javaScript" scheme="http://yoursite.com/categories/javaScript/"/>
+    
+    
+      <category term="Ajax" scheme="http://yoursite.com/tags/Ajax/"/>
+    
+  </entry>
+  
+  <entry>
     <title>对stripeTables函数添加表格斑马线效果的理解</title>
     <link href="http://yoursite.com/2016/10/20/%E5%AF%B9stripeTables%E5%87%BD%E6%95%B0%E6%B7%BB%E5%8A%A0%E8%A1%A8%E6%A0%BC%E6%96%91%E9%A9%AC%E7%BA%BF%E6%95%88%E6%9E%9C%E7%9A%84%E7%90%86%E8%A7%A3/"/>
     <id>http://yoursite.com/2016/10/20/对stripeTables函数添加表格斑马线效果的理解/</id>
     <published>2016-10-20T02:57:33.000Z</published>
-    <updated>2016-10-20T04:56:52.325Z</updated>
+    <updated>2016-10-22T03:35:31.958Z</updated>
     
     <content type="html"><![CDATA[<p>通常，如果浏览器支持css3，那么设置表格隔行样式（即斑马线效果）很简单。<a id="more"></a>只需下面两行样式：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">tr</span><span class="selector-pseudo">:nth-child(odd)</span> &#123;<span class="attribute">background-color</span>: <span class="number">#fff</span>;&#125;</div><div class="line"><span class="selector-tag">tr</span><span class="selector-pseudo">:nth-child(even)</span> &#123;<span class="attribute">background-color</span>: <span class="number">#ffc</span>;&#125;</div></pre></td></tr></table></figure></p>
 <p>上面的样式效果为: 表格奇数行背景颜色为白色，偶数行背景颜色为浅黄色。</p>
@@ -34,7 +156,7 @@
 <p><strong>第二轮循环</strong><br>检测到<code>odd==true</code>，所以设置背景色为浅黄色，并把<code>odd</code>的值改为<code>false</code>。即表格第二行背景设置为浅黄色。</p>
 <p><strong>第三轮循环</strong><br>由于<code>odd</code>等于<code>false</code>，所以执行<code>else</code>板块，不设置样式，把<code>odd</code>的值改为<code>true</code>。即表格的第三行不设置背景样式。</p>
 </blockquote>
-<p>下面的循环以此类推。</p>
+<p>下面的循环依次类推。</p>
 <p>这样，表格里的偶数行都有了新的背景颜色浅黄色。</p>
 ]]></content>
     

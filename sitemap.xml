@@ -2,16 +2,23 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://yoursite.com/2016/09/24/hello-world/</loc>
+    <loc>http://yoursite.com/2016/11/22/Ajax%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/</loc>
     
-    <lastmod>2016-10-20T05:02:40.973Z</lastmod>
+    <lastmod>2016-11-22T09:35:42.279Z</lastmod>
     
   </url>
   
   <url>
     <loc>http://yoursite.com/2016/10/20/%E5%AF%B9stripeTables%E5%87%BD%E6%95%B0%E6%B7%BB%E5%8A%A0%E8%A1%A8%E6%A0%BC%E6%96%91%E9%A9%AC%E7%BA%BF%E6%95%88%E6%9E%9C%E7%9A%84%E7%90%86%E8%A7%A3/</loc>
     
-    <lastmod>2016-10-20T04:56:52.325Z</lastmod>
+    <lastmod>2016-10-22T03:35:31.958Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/09/24/hello-world/</loc>
+    
+    <lastmod>2016-10-20T05:02:40.973Z</lastmod>
     
   </url>
   
